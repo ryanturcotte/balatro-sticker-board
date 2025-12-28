@@ -1,0 +1,210 @@
+:root {
+    --bg-color: #2b2b2b;
+    --card-bg: #3c3c3c;
+    --text-color: #f0f0f0;
+    --accent-color: #ff4d4d; /* Balatro Red */
+    --gold: #ffd700;
+    --orange: #ff8c00;
+    --purple: #9370db;
+    --blue: #4169e1;
+    --black: #1a1a1a;
+    --red: #ff4500;
+    --white: #f5f5f5;
+    --green: #32cd32;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.upload-area {
+    margin: 20px 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 2px solid var(--accent-color);
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.custom-file-upload:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+#loading {
+    font-size: 1.2em;
+    color: var(--gold);
+}
+
+#error {
+    color: red;
+    margin-top: 10px;
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #444;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--white);
+}
+
+#joker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding-bottom: 60px;
+}
+
+.joker-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    aspect-ratio: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+
+.joker-card:hover {
+    transform: translateY(-5px);
+    z-index: 10;
+}
+
+.joker-name {
+    font-weight: bold;
+    font-size: 0.9em;
+    z-index: 2;
+}
+
+.joker-id {
+    font-size: 0.7em;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Stickers */
+.sticker-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Card Borders based on Sticker (Optional: Apply to whole card) */
+.joker-card.gold { border-color: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.joker-card.orange { border-color: var(--orange); box-shadow: 0 0 8px var(--orange); }
+.joker-card.purple { border-color: var(--purple); }
+.joker-card.blue { border-color: var(--blue); }
+.joker-card.black { border-color: var(--black); border: 2px solid #555; }
+.joker-card.red { border-color: var(--red); }
+.joker-card.white { border-color: var(--white); }
+.joker-card.green { border-color: var(--green); }
+
+/* Legend */
+.legend {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    border-top: 1px solid #444;
+    z-index: 100;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8em;
+}
+
+.sticker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.sticker-gold { background: var(--gold); box-shadow: 0 0 5px var(--gold); }
+.sticker-orange { background: var(--orange); }
+.sticker-purple { background: var(--purple); }
+.sticker-blue { background: var(--blue); }
+.sticker-black { background: var(--black); border: 1px solid #555; }
+.sticker-red { background: var(--red); }
+.sticker-white { background: var(--white); }
+.sticker-green { background: var(--green); }
+.sticker-none { background: #444; border: 1px dashed #666; }
+
+.hidden {
+    display: none !important;
+}

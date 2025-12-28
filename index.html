@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balatro Sticker Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Balatro Sticker Viewer</h1>
+            <p>Upload your <code>profile.jkr</code> or <code>save.jkr</code> to see your collection progress.</p>
+            <div class="upload-area">
+                <input type="file" id="fileInput" accept=".jkr">
+                <label for="fileInput" class="custom-file-upload">
+                    Choose Save File
+                </label>
+            </div>
+            <div id="loading" class="hidden">Loading...</div>
+            <div id="error" class="hidden"></div>
+        </header>
+
+        <section id="stats" class="hidden">
+            <div class="stat-box">
+                <span class="stat-label">Jokers Discovered</span>
+                <span class="stat-value" id="stat-discovered">0/150</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Completionist+</span>
+                <span class="stat-value" id="stat-gold">0/150</span>
+            </div>
+        </section>
+
+        <main id="joker-grid" class="hidden">
+            <!-- Jokers will be inserted here -->
+        </main>
+        
+        <footer class="legend">
+            <div class="legend-item"><span class="sticker sticker-gold"></span> Gold</div>
+            <div class="legend-item"><span class="sticker sticker-orange"></span> Orange</div>
+            <div class="legend-item"><span class="sticker sticker-purple"></span> Purple</div>
+            <div class="legend-item"><span class="sticker sticker-blue"></span> Blue</div>
+            <div class="legend-item"><span class="sticker sticker-black"></span> Black</div>
+            <div class="legend-item"><span class="sticker sticker-red"></span> Red</div>
+            <div class="legend-item"><span class="sticker sticker-white"></span> White</div>
+            <div class="legend-item"><span class="sticker sticker-none"></span> None</div>
+        </footer>
+    </div>
+
+    <!-- Load the bundle as a module so we can import from it if needed, or if it exposes a global -->
+    <!-- Since rollup config format is 'es', we must use type="module" -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
