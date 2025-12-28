@@ -208,3 +208,50 @@ input[type="file"] {
 .hidden {
     display: none !important;
 }
+
+/* Consent Banner */
+#consent-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #555;
+    text-align: center;
+}
+
+.consent-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#consent-accept, #consent-decline {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#consent-accept {
+    background-color: var(--green);
+    color: white;
+}
+
+#consent-decline {
+    background-color: #555;
+    color: white;
+}
+
+#consent-accept:hover { background-color: #2eb82e; }
+#consent-decline:hover { background-color: #444; }

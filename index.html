@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balatro Sticker Viewer</title>
-
+    <script>
+        // Placeholder replaced by GitHub Actions
+        window.GA_ID = 'GA_MEASUREMENT_ID_PLACEHOLDER';
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -49,6 +52,15 @@
             <div class="legend-item"><span class="sticker sticker-white"></span> White</div>
             <div class="legend-item"><span class="sticker sticker-none"></span> None</div>
         </footer>
+    </div>
+
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="hidden">
+        <p>This site uses Google Analytics to count visitors. No personal data is stored.</p>
+        <div class="consent-buttons">
+            <button id="consent-accept">Accept</button>
+            <button id="consent-decline">Decline</button>
+        </div>
     </div>
 
     <!-- Load the bundle as a module so we can import from it if needed, or if it exposes a global -->
