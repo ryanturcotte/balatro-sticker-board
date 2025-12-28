@@ -37,6 +37,7 @@ jobs:
         env:
           GA_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
         if: ${{ env.GA_ID != '' }}
+        run: |
           sed -i "s|GA_MEASUREMENT_ID_PLACEHOLDER|$GA_ID|" index.html
 
       - name: Upload artifact
