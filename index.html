@@ -25,6 +25,31 @@
             </div>
             <div id="loading" class="hidden">Loading...</div>
             <div id="error" class="hidden"></div>
+
+            <div class="controls-area hidden" id="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search Jokers...">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">Grid View</button>
+                        <button class="view-btn" data-view="tier">Tier View</button>
+                    </div>
+                    <div class="condensed-toggle">
+                        <input type="checkbox" id="hideNamesInput">
+                        <label for="hideNamesInput">Hide Names</label>
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <button class="filter-btn active" data-stake="all">All Stakes</button>
+                    <button class="filter-btn" data-stake="stake_gold">Gold</button>
+                    <button class="filter-btn" data-stake="stake_orange">Orange</button>
+                    <button class="filter-btn" data-stake="stake_purple">Purple</button>
+                    <button class="filter-btn" data-stake="stake_blue">Blue</button>
+                    <button class="filter-btn" data-stake="stake_black">Black</button>
+                    <button class="filter-btn" data-stake="stake_red">Red</button>
+                    <button class="filter-btn" data-stake="stake_white">White</button>
+                    <button class="filter-btn" data-stake="none">No Sticker</button>
+                </div>
+            </div>
         </header>
 
         <section id="stats" class="hidden">
@@ -63,9 +88,8 @@
         </div>
     </div>
 
-    <!-- Load the bundle as a module so we can import from it if needed, or if it exposes a global -->
-    <!-- Since rollup config format is 'es', we must use type="module" -->
-    <script type="module" src="app.js"></script>
+    <!-- Load the bundled app (IIFE) which works without a server -->
+    <script src="dist/app.bundle.js"></script>
 </body>
 
 </html>

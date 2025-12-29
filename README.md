@@ -49,3 +49,4 @@ This repository is configured for **GitHub Pages**.
 ## Credits
 - **Parsing Logic**: Based on `balatro-save-loader` by WilsontheWolf.
 - **Antigravity**: I gave Google Antigravity my save file and the balatro-save-loader source, and it made this pretty quickly for first commit, no editing needed of the site or immediate bugs.
+- **Images**: https://balatrogame.fandom.com/

@@ -1,10 +1,11 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default {
-    input: 'src/index.js',
+    input: 'app.js',
     output: {
-        file: 'bundle.js',
-        format: 'es'
+        file: 'dist/app.bundle.js',
+        format: 'iife',
+        name: 'BalatroApp'
     },
     plugins: [nodeResolve()],
 };
