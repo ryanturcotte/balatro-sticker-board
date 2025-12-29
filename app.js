@@ -233,23 +233,20 @@ function renderTierView(processedJokers) {
         tierRow.className = 'tier-row';
 
         const tierHeader = document.createElement('div');
-        tierHeader.className = 'tier-header';
+        const colorClass = STAKE_CLASS_MAP[stakeKey] || 'none';
+        tierHeader.className = `tier-header ${colorClass}`;
 
         const label = document.createElement('span');
-        label.className = `tier-label sticker-${STAKE_CLASS_MAP[stakeKey] || 'none'}`;
-        label.textContent = STAKE_CLASS_MAP[stakeKey] ?
-            STAKE_CLASS_MAP[stakeKey].charAt(0).toUpperCase() + STAKE_CLASS_MAP[stakeKey].slice(1) :
-            'No Sticker';
+        label.className = 'tier-label';
 
-        // Custom background for labels if not already handled by sticker colors
-        if (!STAKE_CLASS_MAP[stakeKey]) {
-            label.style.background = '#444';
-        } else {
-            label.style.background = `var(--${STAKE_CLASS_MAP[stakeKey]})`;
-            if (['gold', 'white', 'green'].includes(STAKE_CLASS_MAP[stakeKey])) {
-                label.style.color = '#000';
-            }
+        let labelText = 'No Sticker';
+        if (STAKE_CLASS_MAP[stakeKey]) {
+            labelText = STAKE_CLASS_MAP[stakeKey].charAt(0).toUpperCase() + STAKE_CLASS_MAP[stakeKey].slice(1);
         }
+
+        // Shorten labels for sidebar layout
+        // 'No Sticker' is fine, but maybe 'None'? Keep as is for now or use the logic below
+        label.textContent = labelText;
 
         tierHeader.appendChild(label);
         tierRow.appendChild(tierHeader);

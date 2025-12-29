@@ -191,7 +191,7 @@ input[type="file"] {
 }
 
 .hide-names.tier-content .joker-card {
-    flex: 0 0 90px;
+    flex: 0 0 100px;
 }
 
 .hide-names.tier-content .joker-image {
@@ -217,49 +217,124 @@ input[type="file"] {
 /* Tier View Styles */
 .tier-row {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 20px;
-    padding: 15px;
-    border: 1px solid var(--glass-border);
-    animation: fadeIn 0.5s ease-out;
+    flex-direction: row;
+    /* Horizontal layout */
+    margin-bottom: 5px;
+    /* Tighter gap */
+    background: #111;
+    /* Dark background for the row track */
+    border-radius: 4px;
+    border: 1px solid #333;
+    overflow: hidden;
+    /* Ensure rounded corners clip content */
+    min-height: 120px;
+    /* Minimum height for a row */
 }
 
 .tier-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--glass-border);
+    justify-content: center;
+    width: 120px;
+    /* Fixed width for header */
+    flex-shrink: 0;
+    padding: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .tier-label {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 4px 12px;
-    border-radius: 8px;
-    min-width: 120px;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    padding: 0;
+    background: transparent !important;
+    /* Remove individual label bg, apply to header container instead */
+    color: #000;
+    /* Default text color for bright backgrounds */
+    text-shadow: none;
+    line-height: 1.2;
+}
+
+/* Color classes applied to the header container in app.js or via specific selectors */
+.tier-header.gold {
+    background: var(--gold);
+}
+
+.tier-header.orange {
+    background: var(--orange);
+}
+
+.tier-header.purple {
+    background: var(--purple);
+}
+
+.tier-header.blue {
+    background: var(--blue);
+}
+
+.tier-header.black {
+    background: var(--black);
+    color: white;
+}
+
+.tier-header.red {
+    background: var(--red);
+}
+
+.tier-header.white {
+    background: var(--white);
+}
+
+.tier-header.green {
+    background: var(--green);
+}
+
+.tier-header.none {
+    background: #444;
+    color: #ccc;
+}
+
+.tier-header.black .tier-label,
+.tier-header.none .tier-label {
+    color: white;
 }
 
 .tier-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 5px;
     justify-content: flex-start;
+    padding: 5px;
+    align-items: center;
+    background: #1a1a1a;
+    flex-grow: 1;
 }
 
-/* Make cards smaller in tier view */
+/* Base Tier Content Cards */
 .tier-content .joker-card {
-    flex: 0 0 120px;
-    height: 180px;
-    aspect-ratio: auto;
-    padding: 10px;
+    flex: 0 0 110px;
+    /* Increased width for spacing */
+    width: 110px;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 2px;
+    /* Minimal padding for overlap */
+    margin: 0;
+}
+
+.tier-content .joker-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.tier-content .joker-image-container {
+    min-height: auto;
+    margin: 0;
 }
 
 .tier-content .joker-image {
@@ -268,12 +343,20 @@ input[type="file"] {
 }
 
 .tier-content .joker-name {
-    font-size: 0.75em;
+    font-size: 0.7em;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .tier-content .sticker-badge {
-    width: 15px;
-    height: 15px;
+    width: 24px;
+    /* Updated to match user's global change if needed, or keep smaller for tier view */
+    height: 24px;
+    top: 0;
+    right: 0;
 }
 
 .filter-btn {
@@ -335,22 +418,22 @@ input[type="file"] {
 
 #joker-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
     padding-bottom: 100px;
 }
 
 .joker-card {
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 12px;
     text-align: center;
     position: relative;
-    aspect-ratio: 2/3.2;
+    /* aspect-ratio removed for tighter fit */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -359,7 +442,7 @@ input[type="file"] {
 }
 
 .joker-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
@@ -368,20 +451,20 @@ input[type="file"] {
 
 .joker-name {
     font-weight: bold;
-    font-size: 1em;
+    font-size: 0.9em;
     z-index: 2;
-    margin-top: 10px;
+    margin-top: 8px;
     line-height: 1.2;
 }
 
 .joker-image-container {
     width: 100%;
-    flex: 1;
+    /* flex: 1 removed to allow shrinking */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
-    min-height: 120px;
+    margin-bottom: 0px;
+    min-height: auto;
 }
 
 .joker-image {
@@ -395,13 +478,108 @@ input[type="file"] {
 /* Stickers */
 .sticker-badge {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
     z-index: 3;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hexagon Shape for all stakes */
+.sticker-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Hexagon clip-path */
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    background: var(--bg-color);
+    z-index: 1;
+}
+
+/* Inner detail/border effect */
+.sticker-badge::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    background: inherit;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+/* Specific Stake Styles */
+.sticker-badge.sticker-gold::before {
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+}
+
+.sticker-badge.sticker-gold::after {
+    background: radial-gradient(circle, #ffd700, #daa520);
+}
+
+.sticker-badge.sticker-orange::before {
+    background: linear-gradient(135deg, #ff8c00, #ff4500);
+}
+
+.sticker-badge.sticker-orange::after {
+    background: #ff8c00;
+}
+
+.sticker-badge.sticker-purple::before {
+    background: linear-gradient(135deg, #9370db, #4b0082);
+}
+
+.sticker-badge.sticker-purple::after {
+    background: #9370db;
+}
+
+.sticker-badge.sticker-blue::before {
+    background: linear-gradient(135deg, #4169e1, #00008b);
+}
+
+.sticker-badge.sticker-blue::after {
+    background: #4169e1;
+}
+
+.sticker-badge.sticker-black::before {
+    background: linear-gradient(135deg, #444, #000);
+}
+
+.sticker-badge.sticker-black::after {
+    background: #222;
+}
+
+.sticker-badge.sticker-red::before {
+    background: linear-gradient(135deg, #ff4500, #8b0000);
+}
+
+.sticker-badge.sticker-red::after {
+    background: #ff4500;
+}
+
+.sticker-badge.sticker-white::before {
+    background: linear-gradient(135deg, #f5f5f5, #ccc);
+}
+
+.sticker-badge.sticker-white::after {
+    background: #fff;
+}
+
+.sticker-badge.sticker-green::before {
+    background: linear-gradient(135deg, #32cd32, #006400);
+}
+
+.sticker-badge.sticker-green::after {
+    background: #32cd32;
 }
 
 /* Card Borders based on Sticker (Optional: Apply to whole card) */
