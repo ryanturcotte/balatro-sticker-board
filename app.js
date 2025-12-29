@@ -152,3 +152,52 @@ function formatJokerName(rawName) {
         word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
 }
+
+/* Google Analytics Consent Logic */
+document.addEventListener('DOMContentLoaded', () => {
+    const gaId = window.GA_ID;
+    const banner = document.getElementById('consent-banner');
+    const acceptBtn = document.getElementById('consent-accept');
+    const declineBtn = document.getElementById('consent-decline');
+
+    // If no ID or placeholder, don't run (Local dev)
+    if (!gaId || gaId.includes('PLACEHOLDER')) {
+        console.log('GA disabled (Local/No ID)');
+        return;
+    }
+
+    const consent = localStorage.getItem('ga_consent');
+
+    if (consent === 'granted') {
+        loadGA(gaId);
+    } else if (consent === null) {
+        banner.classList.remove('hidden');
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('ga_consent', 'granted');
+        banner.classList.add('hidden');
+        loadGA(gaId);
+    });
+
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('ga_consent', 'denied');
+        banner.classList.add('hidden');
+    });
+});
+
+function loadGA(id) {
+    console.log('Loading Google Analytics...');
+
+    // Inject Script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(script);
+
+    // Initialize
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', id);
+}
