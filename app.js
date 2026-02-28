@@ -166,6 +166,9 @@ function renderJokers() {
             if (currentStakeFilter === 'none') {
                 return !joker.bestStake;
             }
+            if (currentStakeFilter === 'not_gold') {
+                return joker.bestStake !== 'stake_gold';
+            }
             return joker.bestStake === currentStakeFilter;
         });
     }
